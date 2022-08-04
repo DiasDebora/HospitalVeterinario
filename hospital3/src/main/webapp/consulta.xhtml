@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <head>
+        <title>Consultar Animal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+        <h:panelGrid style="width: 100%; text-align: center;">
+            Consulta
+        </h:panelGrid>
+        <h:form >
+            
+             <h:panelGrid columns="3">
+             <h:outputLabel value="detalhes: " />
+             <p:calendar id="dataInicio" pattern="dd/MM/yyyy"
+                         value="#{ConsultaControle.consulta.data}"
+                         required="true" requiredMessage="Data inicio obrigatória"
+                         showOn="button"
+                         locale="pt"/>
+        
+        
+        
+           
+        <p:selectOneMenu id="comboAnimal" converter="animalconverter" 
+                                 required="true" requiredMessage="Selecione um animal"  
+                                 value="#{ConsultaControle.novoAnimal.animal}" >
+                    <f:selectItem itemValue="#{null}" itemLabel="Escolha um animal" 
+                                  noSelectionOption="false"/>
+                    <f:selectItems value="#{ConsultaControle.novoAnimal.animais}" 
+                                   var="tut"
+                                   itemValue="#{tut}"
+                                   itemLabel="#{tut.nome}"/>
+           </p:selectOneMenu>
+             
+    </h:panelGrid>            
+    </h:form> 
+</html>
